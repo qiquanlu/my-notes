@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-# fmt.Println(" Hello World!)
+# fmt.Println("Hello World!")
 
 Hey, there!
  
