@@ -1,7 +1,7 @@
 
-# Disjoint Set
+# Disjoint Sets
 
-::: tip
+::: tip What problems disjoint sets can solve?
 Given the vertices and edges between them, how could we quickly check whether two vertices are connected?
 :::
 
@@ -58,6 +58,56 @@ func find(x int) int{
 
 ## practice problems
 
-* [547. Number of Provinces](https://leetcode.com/problems/number-of-provinces/)
+* [547. Number of Provinces](https://leetcode.com/problems/number-of-provinces/) 
+::: details Click to view solution
+
+```go
+fmt.Println("x")
+```
+:::
+---
 * [261. Graph Valid Tree](https://leetcode.com/problems/graph-valid-tree/)
+::: details Click to view solution
+
+```go
+fmt.Println("x")
+```
+:::
+---
 * [323. Number of Connected Components in an Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
+::: details Click to view solution
+
+```go
+fmt.Println("x")
+```
+:::
+---
+* [1101. The Earliest Moment When Everyone Become Friends](https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/)
+::: details Click to view solution
+
+```go
+fmt.Println("x")
+```
+:::
+---
+* [1202. Smallest String With Swaps](https://leetcode.com/problems/smallest-string-with-swaps/)
+::: details Click to view solution
+```go
+fmt.Println("x")
+```
+:::
+---
+* [399. Evaluate Division](https://leetcode.com/problems/evaluate-division/)
+::: details Click to view solution
+
+```go
+fmt.Println("x")
+```
+:::
+---
+[1168. Optimize Water Distribution in a Village](https://leetcode.com/problems/optimize-water-distribution-in-a-village/)
+::: details Click to view solution
+```go
+fmt.Println("x")
+```
+:::
