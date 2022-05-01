@@ -9,7 +9,7 @@ Given the vertices and edges between them, how could we quickly check whether tw
 
 We can use slice to represent vertices' relations, each slice index i as the vertex, and it's value is parent vertex
 
-## implementation 
+## Implementation 
 
 If a vertex's parent is it self, this means the vertice is not connect to any other vertices.
 ### initialization
@@ -36,6 +36,18 @@ func find(x int) int{
 }
 ```
 
+### path compression find()
+Each time when we find the vertice's parent, we could save it for next time
+
+```go
+func find(x int) int{
+    if roots[x] != x{
+        roots[x] = find(roots[x])
+    }
+    return roots[x]
+}
+```
+
 ### union()
  The union function connects two previously unconnected vertices by giving them the same root node. 
 
@@ -50,21 +62,14 @@ func union(x,y int){
 }
 ```
 
-### path compression find()
-Each time when we find the vertice's parent, we could save it for next time
+## Complexity 
+|	|Union-find Constructor|	Find|	Union|	Connected|
+|---|---|---|---|---|
+| <b>Time Complexity</b>|	<i>O(N)</i>|	<i>O(logN)</i>	|<i>O(logN)</i>|	<i>O(logN)</i>|
 
-```go
-func find(x int) int{
-    if roots[x] != x{
-        roots[x] = find(roots[x])
-    }
-    return roots[x]
-}
-```
-## complexity 
+<b>find</b> operation, we need<b> <i>O(1)</i></b> time for the best case. In the worst case, it would be <b><i>O(N) </i></b>time when the tree is skewed. However, on average, the time complexity will be <b><i>O(logN)</i></b>.
 
-
-## practice problems
+## Practice problems
 
 * [547. Number of Provinces](https://leetcode.com/problems/number-of-provinces/) 
 ::: details Click to view solution
@@ -169,7 +174,41 @@ func validTree(n int, edges [][]int) bool {
 ::: details Click to view solution
 
 ```go
-// todo
+func countComponents(n int, edges [][]int) int {
+    roots := make([]int, n)
+    for i := range roots{
+        roots[i] = i
+    }
+    
+    var find func(int) int
+    find = func(x int) int{
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    
+    var union func(int, int)
+    union = func(x, y int){
+        xroot := find(x)
+        yroot := find(y)
+        if xroot != yroot{
+            roots[yroot] = xroot
+        }
+    }
+    
+    for _, edge := range edges{
+        union(edge[0],edge[1])
+    }
+    
+    count := 0
+    for i := range roots{
+        if find(i) == i{
+            count++
+        }
+    }
+    return count
+}
 ```
 :::
 ---
