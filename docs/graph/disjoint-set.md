@@ -7,11 +7,11 @@ editLink: true
 Given the vertices and edges between them, how could we quickly check whether two vertices are connected?
 :::
 
-We can use slice to represent vertices' relations, each slice index i as the vertice, and it's value is parent vertice
+We can use slice to represent vertices' relations, each slice index i as the vertex, and it's value is parent vertex
 
 ## implementation 
 
-If a vertice's parent is it self, this means the vertice is not connect to any other vertices.
+If a vertex's parent is it self, this means the vertice is not connect to any other vertices.
 
 We initialize the slice value with its index. 
 
@@ -23,7 +23,9 @@ for i := range roots{
 ```
 
 ## find()
-We recursively search vertice's parent until roots[x] == x
+The find function locates the root node of a given vertex.
+
+We recursively search vertex's parent until roots[x] == x
 ```go
 func find(x int) int{
     if roots[x] == x{
@@ -34,6 +36,8 @@ func find(x int) int{
 ```
 
 ## union()
+ The union function connects two previously unconnected vertices by giving them the same root node. 
+
 If two vertices' parents not the same, we make one of them as the other's parent, so they are connected.
 ```go
 func union(x,y int){
@@ -113,7 +117,49 @@ func findCircleNum(isConnected [][]int) int {
 ::: details Click to view solution
 
 ```go
-fmt.Println("x")
+func validTree(n int, edges [][]int) bool {
+    // a valid tree with n nodes has to have exact n-1 edges, and all nodes has to be connected
+    if n != len(edges) + 1{
+        return false
+    }
+    if n == 1{
+        return true
+    }
+    
+    roots := make([]int, n)
+    for i := range roots{
+        roots[i] = i
+    }
+    
+    var find func(int) int
+    find = func(x int) int{
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    
+    var union func(int, int)
+    union = func(x, y int){
+        xroot := find(x)
+        yroot := find(y)
+        if xroot != yroot{
+            roots[yroot] = xroot
+        }
+    }
+    
+    for _,edge := range edges{
+        union(edge[0],edge[1])
+    }
+    
+    root := find(0)
+    for i := 1; i < n; i++{
+        if find(roots[i]) != root{
+            return false
+        }
+    }
+    return true
+}
 ```
 :::
 ---
