@@ -1,5 +1,5 @@
 ---
-editLink: true
+sidebarDepth: 3
 ---
 # Disjoint Sets
 
@@ -12,6 +12,7 @@ We can use slice to represent vertices' relations, each slice index i as the ver
 ## implementation 
 
 If a vertex's parent is it self, this means the vertice is not connect to any other vertices.
+### initialization
 
 We initialize the slice value with its index. 
 
@@ -22,7 +23,7 @@ for i := range roots{
 }
 ```
 
-## find()
+### find()
 The find function locates the root node of a given vertex.
 
 We recursively search vertex's parent until roots[x] == x
@@ -35,7 +36,7 @@ func find(x int) int{
 }
 ```
 
-## union()
+### union()
  The union function connects two previously unconnected vertices by giving them the same root node. 
 
 If two vertices' parents not the same, we make one of them as the other's parent, so they are connected.
@@ -49,18 +50,19 @@ func union(x,y int){
 }
 ```
 
-## path compression find()
+### path compression find()
 Each time when we find the vertice's parent, we could save it for next time
 
 ```go
 func find(x int) int{
-    if roots[x] == x{
-        return x
+    if roots[x] != x{
+        roots[x] = find(roots[x])
     }
-    roots[x] = find(roots[x])
     return roots[x]
 }
 ```
+## complexity 
+
 
 ## practice problems
 
@@ -167,7 +169,7 @@ func validTree(n int, edges [][]int) bool {
 ::: details Click to view solution
 
 ```go
-fmt.Println("x")
+// todo
 ```
 :::
 ---
@@ -175,14 +177,14 @@ fmt.Println("x")
 ::: details Click to view solution
 
 ```go
-fmt.Println("x")
+// todo
 ```
 :::
 ---
 * [1202. Smallest String With Swaps](https://leetcode.com/problems/smallest-string-with-swaps/)
 ::: details Click to view solution
 ```go
-fmt.Println("x")
+// todo
 ```
 :::
 ---
@@ -190,13 +192,13 @@ fmt.Println("x")
 ::: details Click to view solution
 
 ```go
-fmt.Println("x")
+// todo
 ```
 :::
 ---
 [1168. Optimize Water Distribution in a Village](https://leetcode.com/problems/optimize-water-distribution-in-a-village/)
 ::: details Click to view solution
 ```go
-fmt.Println("x")
+// todo
 ```
 :::

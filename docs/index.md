@@ -28,7 +28,7 @@ My name is Qiquan Lu, I'm a fullstack software engineer.
 ## This site
 This 📚 myNotes site is mostly the notes I took when solving [LeetCode](https://leetcode.com/problemset/all/) problems using Golang. 
 
-If you arrive here from a search engine, I hope what you found here is helpful.
+If you arrive here from a search engine, I hope what you find here will be helpful.
 
 If you find anything wrong or want to share your thoughts on any leetcode topic, feel free to reach out to me qiquan.lu@outlook.com
 
