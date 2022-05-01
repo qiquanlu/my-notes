@@ -1,4 +1,6 @@
-
+---
+editLink: true
+---
 # Disjoint Sets
 
 ::: tip What problems disjoint sets can solve?

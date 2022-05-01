@@ -13,7 +13,8 @@ export default defineConfig({
     },
     markdown: {
         lineNumbers: true
-    }
+    },
+
 })
 
 function getAlgoSidebar() {
