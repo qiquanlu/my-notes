@@ -62,7 +62,48 @@ func find(x int) int{
 ::: details Click to view solution
 
 ```go
-fmt.Println("x")
+func findCircleNum(isConnected [][]int) int {
+    n := len(isConnected)
+    
+    roots := make([]int, n)
+    for i := range roots{
+        roots[i] = i
+    }
+    
+    var find func(int) int
+    find = func (x int) int{
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    
+    var union func(int, int)
+    union = func(x, y int){
+        xroot := find(x)
+        yroot := find(y)
+        if xroot != yroot{
+            roots[yroot] = xroot
+        }
+    }
+    
+    for i := 0; i < n; i++{
+        for j := i + 1; j < n; j++{
+            if isConnected[i][j] == 1{
+                union(i,j)
+            }
+        }
+    } 
+    
+    count := 0
+    for i := range roots{
+        if roots[i] == i{
+            count++
+        }
+    }
+    
+    return count
+}
 ```
 :::
 ---
