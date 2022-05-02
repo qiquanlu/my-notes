@@ -72,7 +72,7 @@ func union(x,y int){
 ## Practice problems
 
 * [547. Number of Provinces](https://leetcode.com/problems/number-of-provinces/) 
-::: details Click to view solution
+::: details View solution
 
 ```go
 func findCircleNum(isConnected [][]int) int {
@@ -121,7 +121,7 @@ func findCircleNum(isConnected [][]int) int {
 :::
 ---
 * [261. Graph Valid Tree](https://leetcode.com/problems/graph-valid-tree/)
-::: details Click to view solution
+::: details View solution
 
 ```go
 func validTree(n int, edges [][]int) bool {
@@ -171,7 +171,7 @@ func validTree(n int, edges [][]int) bool {
 :::
 ---
 * [323. Number of Connected Components in an Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
-::: details Click to view solution
+::: details View solution
 
 ```go
 func countComponents(n int, edges [][]int) int {
@@ -213,22 +213,55 @@ func countComponents(n int, edges [][]int) int {
 :::
 ---
 * [1101. The Earliest Moment When Everyone Become Friends](https://leetcode.com/problems/the-earliest-moment-when-everyone-become-friends/)
-::: details Click to view solution
+::: details View solution
 
 ```go
-// todo
+func earliestAcq(logs [][]int, n int) int {
+    sort.Slice(logs, func(i,j int) bool{
+        return logs[i][0] < logs[j][0]
+    })
+    
+    roots := make([]int,n)
+    for i := range roots{
+        roots[i] = i
+    }
+    
+    var find func(int) int
+    find = func(x int) int{
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    count := n
+    
+    for _,logx := range logs{
+        xroot := find(logx[1])
+        yroot := find(logx[2])
+        if xroot != yroot{
+            // we keep track the counter when making new connections
+            count-- 
+            roots[yroot] = xroot
+            if count == 1{
+                return logx[0]
+            }
+        }
+    }
+    
+    return -1
+}
 ```
 :::
 ---
 * [1202. Smallest String With Swaps](https://leetcode.com/problems/smallest-string-with-swaps/)
-::: details Click to view solution
+::: details View solution
 ```go
 // todo
 ```
 :::
 ---
 * [399. Evaluate Division](https://leetcode.com/problems/evaluate-division/)
-::: details Click to view solution
+::: details View solution
 
 ```go
 // todo
@@ -236,7 +269,7 @@ func countComponents(n int, edges [][]int) int {
 :::
 ---
 [1168. Optimize Water Distribution in a Village](https://leetcode.com/problems/optimize-water-distribution-in-a-village/)
-::: details Click to view solution
+::: details View solution
 ```go
 // todo
 ```
