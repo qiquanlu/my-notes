@@ -63,9 +63,9 @@ func union(x,y int){
 ```
 
 ## Complexity 
-|	|Union-find Constructor|	Find|	Union|	Connected|
-|---|---|---|---|---|
-| <b>Time Complexity</b>|	<i>O(N)</i>|	<i>O(logN)</i>	|<i>O(logN)</i>|	<i>O(logN)</i>|
+|                        | Union-find Constructor | Find           | Union          | Connected      |
+| ---------------------- | ---------------------- | -------------- | -------------- | -------------- |
+| <b>Time Complexity</b> | <i>O(N)</i>            | <i>O(logN)</i> | <i>O(logN)</i> | <i>O(logN)</i> |
 
 <b>find</b> operation, we need<b> <i>O(1)</i></b> time for the best case. In the worst case, it would be <b><i>O(N) </i></b>time when the tree is skewed. However, on average, the time complexity will be <b><i>O(logN)</i></b>.
 
@@ -256,7 +256,49 @@ func earliestAcq(logs [][]int, n int) int {
 * [1202. Smallest String With Swaps](https://leetcode.com/problems/smallest-string-with-swaps/)
 ::: details View solution
 ```go
-// todo
+func smallestStringWithSwaps(s string, pairs [][]int) string {
+    roots := make([]int,len(s))
+    for i := range roots{
+        roots[i] = i
+    }
+    
+    var find func(int) int
+    find = func(x int) int {
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    
+    for _,pair := range pairs{
+        xroot := find(pair[0])
+        yroot := find(pair[1])
+        
+        if xroot != yroot{
+            roots[yroot] = xroot
+        }
+    }
+    // group connected positions to dict by root key
+    dict := make(map[int][]int)
+    for i := range roots{
+        root := find(i)
+        dict[root] = append(dict[root],i)
+    }
+    
+    // sort positions and map original s to res
+    res := make([]byte,len(s))
+    for _,values := range dict{
+        originPos := make([]int,len(values))
+        copy(originPos,values)
+        sort.Slice(values, func(i,j int) bool{
+            return s[values[i]] < s[values[j]]
+        })
+        for i := range values{
+            res[originPos[i]] = s[values[i]]
+        } 
+    }
+    return string(res)
+}
 ```
 :::
 ---
