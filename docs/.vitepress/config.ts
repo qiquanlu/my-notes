@@ -24,6 +24,12 @@ function getAlgoSidebar() {
             children: [
                 { text: 'Disjoint Sets', link: '/graph/disjoint-set' },
             ]
+        },
+        {
+            text: 'Resources',
+            children: [
+                { text: 'Links', link: '/resource-links' },
+            ]
         }
     ]
 }
