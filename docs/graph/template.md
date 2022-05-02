@@ -9,7 +9,7 @@ Something here
 
 
 
-## implementation 
+## Implementation 
 
 
 ### initialization
@@ -31,10 +31,9 @@ func find(x int) int{
 }
 ```
 
-## complexity 
+## Complexity 
 
-
-## practice problems
+## Practice problems
 
 * [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
 ::: details View solution

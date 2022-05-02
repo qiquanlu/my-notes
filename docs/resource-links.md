@@ -1,8 +1,13 @@
 ---
 sidebarDepth: 2
 ---
-## Free Learning Resources 
+# Learning Resources 
 
-[wisdompeak/LeetCode](https://github.com/wisdompeak/LeetCode)
+## Huifeng Guan
 
-[Richard Liu's system design notes](https://liuzhenglaichn.gitbook.io/system-design/)
+[Huifeng Guan's LeetCode](https://github.com/wisdompeak/LeetCode)
+
+## Richard Liu
+[Richard Liu's System Design Notes](https://liuzhenglaichn.gitbook.io/system-design/)
+
+[Richard Liu's LeetCode](https://github.com/lzl124631x/LeetCode)

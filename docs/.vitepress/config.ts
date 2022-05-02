@@ -23,6 +23,7 @@ function getAlgoSidebar() {
             text: 'Graph',
             children: [
                 { text: 'Disjoint Sets', link: '/graph/disjoint-set' },
+                { text: 'Topological Sort', link: '/graph/topological-sort' },
             ]
         },
         {
