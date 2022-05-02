@@ -115,7 +115,7 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 ```
 :::
 ---
-* []() 
+* [269. Alien Dictionary](https://leetcode.com/problems/alien-dictionary) 
 ::: details View solution
 
 ```go
@@ -124,7 +124,7 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 ```
 :::
 ---
-* []() 
+* [310. Minimum Height Trees](https://leetcode.com/problems/minimum-height-trees) 
 ::: details View solution
 
 ```go
@@ -133,7 +133,7 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 ```
 :::
 ---
-* []() 
+* [1136. Parallel Courses](https://leetcode.com/problems/parallel-courses/) 
 ::: details View solution
 
 ```go
