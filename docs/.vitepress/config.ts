@@ -29,6 +29,7 @@ function getAlgoSidebar() {
       children: [
         { text: "Disjoint Sets", link: "/graph/disjoint-set" },
         { text: "Topological Sort", link: "/graph/topological-sort" },
+        { text: "Depth First Search", link: "/graph/depth-first-search" }
       ],
     },
     {
@@ -38,19 +39,3 @@ function getAlgoSidebar() {
   ];
 }
 
-function getConfigSidebar() {
-  return [
-    {
-      text: "App Config",
-      children: [{ text: "Basics", link: "/config/basics" }],
-    },
-    {
-      text: "Theme Config",
-      children: [
-        { text: "Homepage", link: "/config/homepage" },
-        { text: "Algolia Search", link: "/config/algolia-search" },
-        { text: "Carbon Ads", link: "/config/carbon-ads" },
-      ],
-    },
-  ];
-}
