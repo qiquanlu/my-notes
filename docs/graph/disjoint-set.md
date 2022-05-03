@@ -306,13 +306,43 @@ func smallestStringWithSwaps(s string, pairs [][]int) string {
 ::: details View solution
 
 ```go
-// todo
+// TODO
 ```
 :::
 ---
 [1168. Optimize Water Distribution in a Village](https://leetcode.com/problems/optimize-water-distribution-in-a-village/)
 ::: details View solution
 ```go
-// todo
+// TODO
 ```
 :::
+* [1971. Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/) 
+::: details View solution
+
+```go
+func validPath(n int, edges [][]int, source int, destination int) bool {
+    roots := make([]int, n)
+    for i := range roots{
+        roots[i] = i
+    }
+    
+    var find func(int) int
+    find = func(x int) int {
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    
+    for _,edge := range edges{
+        xroot := find(edge[0])
+        yroot := find(edge[1])
+        if xroot != yroot{
+            roots[yroot] = xroot
+        }
+    }
+    return find(source) == find(destination)
+}
+```
+:::
+---

@@ -12,14 +12,6 @@ Something here
 ## Implementation 
 
 
-### initialization
-
-We initialize the slice value with its index. 
-
-```go
-// todo
-```
-
 ## Complexity 
 Time Complexity: <b><i>O(V+E)</i></b>. 
 
@@ -30,19 +22,11 @@ Space Complexity: <b><i>O(V)</i></b>.
  Either the manually created stack or the recursive call stack can store up to V vertices.
 ## Practice problems
 
-* [1971. Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/) 
-::: details View solution
-
-```go
-// todo
-```
-:::
----
 * [797. All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/) 
 ::: details View solution
 
 ```go
-// todo
+// TODO
 ```
 :::
 ---
@@ -50,7 +34,7 @@ Space Complexity: <b><i>O(V)</i></b>.
 ::: details View solution
 
 ```go
-// todo
+// TODO
 ```
 :::
 ---
@@ -58,7 +42,7 @@ Space Complexity: <b><i>O(V)</i></b>.
 ::: details View solution
 
 ```go
-// todo
+// TODO
 ```
 :::
 ---
@@ -66,7 +50,7 @@ Space Complexity: <b><i>O(V)</i></b>.
 ::: details View solution
 
 ```go
-// todo
+// TODO
 ```
 :::
 ---

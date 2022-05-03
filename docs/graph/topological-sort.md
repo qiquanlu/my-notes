@@ -119,8 +119,7 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 ::: details View solution
 
 ```go
-
-}
+// TODO
 ```
 :::
 ---
@@ -128,8 +127,7 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 ::: details View solution
 
 ```go
-
-}
+// TODO
 ```
 :::
 ---
