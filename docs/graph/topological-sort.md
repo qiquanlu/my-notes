@@ -137,7 +137,43 @@ func findOrder(numCourses int, prerequisites [][]int) []int {
 ::: details View solution
 
 ```go
+func minimumSemesters(n int, relations [][]int) int {
+    dict := make(map[int][]int)
+    indegree := make([]int,n+1)
 
+    for _,relation := range relations{
+        indegree[relation[1]]++
+        dict[relation[0]] = append( dict[relation[0]], relation[1])
+    }
+    semester := 0
+    queue := []int{}
+    for i := range indegree{
+        if indegree[i] == 0{
+            queue = append(queue,i)
+        }
+    }
+    
+    for len(queue) > 0{
+        size := len(queue)
+        for i := 0;i < size;i++{
+            pop := queue[0]
+            queue = queue[1:]
+            for _,course := range dict[pop]{
+                indegree[course]--
+                if indegree[course] == 0{
+                    queue = append(queue,course)
+                }
+            }            
+        }
+        semester++
+    }
+    
+    for i := range indegree{
+        if indegree[i] != 0{
+            return -1
+        }
+    }
+    return semester
 }
 ```
 :::
