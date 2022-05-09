@@ -4,29 +4,58 @@ sidebarDepth: 3
 # Depth First Search
 
 ::: tip What problems can solve?
-Something here
+Given a graph, find all of its vertices, and find all paths between two vertices
 :::
 
 
 
-## Implementation 
+## Traverse all vertices in a “graph”
 
+Use stack(FILO)
+
+keep track of visited
+
+
+## Traverse all paths between any two vertices in a “graph”
 
 ## Complexity 
-Time Complexity: <b><i>O(V+E)</i></b>. 
+Time Complexity: ***O(V+E)***. 
 
 Here, V represents the number of vertices, and E represents the number of edges. We need to check every vertex and traverse through every edge in the graph.
 
-Space Complexity: <b><i>O(V)</i></b>.
+Space Complexity: ***O(V)***.
 
  Either the manually created stack or the recursive call stack can store up to V vertices.
 ## Practice problems
+* [1971. Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/)
+::: details View solution
 
+```go
+```
 * [797. All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/) 
 ::: details View solution
 
 ```go
-// TODO
+func allPathsSourceTarget(graph [][]int) [][]int {
+    res := [][]int{}
+    n := len(graph)
+    var backtracking func(int,[]int)
+    backtracking = func(from int,path []int){
+        if from == n-1{
+            t := make([]int,len(path))
+            copy(t,path)
+            res = append(res,t)
+            return
+        }
+        for i := range graph[from]{
+            path = append(path,graph[from][i])
+            backtracking(graph[from][i],path)
+            path = path[:len(path)-1]
+        }
+    }
+    backtracking(0,[]int{0})
+    return res
+}
 ```
 :::
 ---

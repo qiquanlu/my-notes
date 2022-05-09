@@ -4,6 +4,8 @@ sidebarDepth: 3
 # Disjoint Sets
 
 ::: tip What problems disjoint sets can solve?
+Checking connectivity between two vertices.
+
 Given the vertices and edges between them, how could we quickly check whether two vertices are connected?
 :::
 
@@ -63,11 +65,11 @@ func union(x,y int){
 ```
 
 ## Complexity 
-|                        | Union-find Constructor | Find           | Union          | Connected      |
-| ---------------------- | ---------------------- | -------------- | -------------- | -------------- |
-| <b>Time Complexity</b> | <i>O(N)</i>            | <i>O(logN)</i> | <i>O(logN)</i> | <i>O(logN)</i> |
+|                     | Union-find Constructor | Find          | Union         | Connected     |
+| ------------------- | ---------------------- | ------------- | ------------- | ------------- |
+| **Time Complexity** | ***O(N)***             | ***O(logN)*** | ***O(logN)*** | ***O(logN)*** |
 
-<b>find</b> operation, we need<b> <i>O(1)</i></b> time for the best case. In the worst case, it would be <b><i>O(N) </i></b>time when the tree is skewed. However, on average, the time complexity will be <b><i>O(logN)</i></b>.
+**find** operation, we need ***O(1)*** time for the best case. In the worst case, it would be ***O(N)*** time when the tree is skewed. However, on average, the time complexity will be ***O(logN)***.
 
 ## Practice problems
 

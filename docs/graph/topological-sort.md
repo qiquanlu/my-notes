@@ -6,12 +6,12 @@ sidebarDepth: 3
 ::: tip What problems can topological sort algrithm solve?
 Topological sort solves dependency problem. 
 
-Topological sorting for Directed Acyclic Graph (<b>DAG</b>) is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering. 
+Topological sorting for Directed Acyclic Graph (**DAG**) is a linear ordering of vertices such that for every directed edge uv, vertex u comes before v in the ordering. 
 :::
 
 ::: warning Limitations
 
-* Topological Sorting for a graph is <b><i> not possible</i></b> if the graph is not a <b> DAG </b>.
+* Topological Sorting for a graph is ***not possible*** if the graph is not a **DAG** .
 * At least one vertex with 0 in-degree to start
 
 :::
@@ -64,8 +64,8 @@ for len(queue) > 0 {
 ## Complexity 
 V represents the number of vertices, and E represents the number of edges.
 
-* Time Complexity: <b><i>O(V+E)</i></b>
-* Space Complexity: <b><i>O(V+E)</i></b>
+* Time Complexity: ***O(V+E)***
+* Space Complexity: ***O(V+E)***
 
 ## Practice problems
 

@@ -1,13 +1,16 @@
----
-sidebarDepth: 2
----
 
-# Hey, there!
+<script setup>
+import HomeAvatar from './.vitepress/theme/components/HomeAvatar.vue'
+// import MyStacks from './.vitepress/theme/components/MyStacks.vue'
+</script>
+
+
+<HomeAvatar />
  
 My name is Qiquan Lu, I'm a fullstack software engineer.
-
+<!-- <MyStacks /> -->
 ## My stack
-<svg class="logo" viewBox="0 0 128 128" width="24" height="24" data-v-1c32dc7e=""><path fill="#42b883" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z" data-v-1c32dc7e=""></path><path fill="#35495e" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z" data-v-1c32dc7e=""></path></svg> [Vue](https://vuejs.org/),
+[Vue](https://vuejs.org/),
 <img src="https://nuxtjs.org/design-kit/colored-logo.svg" alt="nuxtjs logo" height="24" width="24"/>[Nuxt](https://nuxtjs.org/),
 <img src="https://vitejs.dev/logo.svg" alt="vite logo" height="24" width="24"/>
 [Vite](https://vitejs.dev/),
