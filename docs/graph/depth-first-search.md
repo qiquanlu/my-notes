@@ -11,9 +11,10 @@ Given a graph, find all of its vertices, and find all paths between two vertices
 
 ## Traverse all vertices in a “graph”
 
-Use stack(FILO)
-
-keep track of visited
+Template
+* build adjacency list
+* use stack(FILO) or queue(FIFO) to save path
+* keep track of visited
 
 
 ## Traverse all paths between any two vertices in a “graph”
@@ -32,6 +33,8 @@ Space Complexity: ***O(V)***.
 
 ```go
 ```
+:::
+---
 * [797. All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/) 
 ::: details View solution
 
