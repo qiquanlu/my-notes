@@ -28,11 +28,42 @@ Space Complexity: ***O(V)***.
 
  Either the manually created stack or the recursive call stack can store up to V vertices.
 ## Practice problems
+
 * [1971. Find if Path Exists in Graph](https://leetcode.com/problems/find-if-path-exists-in-graph/)
 ::: details View solution
 
 ```go
+func validPath(n int, edges [][]int, source int, destination int) bool {
+    // build adjacency list
+    adjList := make(map[int][]int)
+    for _,edge := range edges{
+        adjList[edge[0]] = append(adjList[edge[0]], edge[1]) 
+        adjList[edge[1]] = append(adjList[edge[1]], edge[0]) 
+    }
+    // use stack
+    stack := []int{source}
+    // visited
+    visited := make([]bool,n)
+    
+    for len(stack) > 0{
+        pop := stack[len(stack)-1]
+        stack = stack[:len(stack)-1]
+        
+        if pop == destination{
+            return true
+        }
+        
+        for _,next := range adjList[pop]{
+            if !visited[next]{
+                visited[next] = true
+                stack = append(stack, next)
+            }
+        }
+    }
+    return false
+}
 ```
+
 :::
 ---
 * [797. All Paths From Source to Target](https://leetcode.com/problems/all-paths-from-source-to-target/) 

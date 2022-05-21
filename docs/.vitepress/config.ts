@@ -33,6 +33,12 @@ function getAlgoSidebar() {
       ],
     },
     {
+      text: "Sorting",
+      children: [
+        { text: "Heap", link: "/sorting/heapsort" }
+      ],
+    },
+    {
       text: "Resources",
       children: [{ text: "Links", link: "/resource-links" }],
     },
