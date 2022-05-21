@@ -172,6 +172,118 @@ Space complexity : ***O(n)***. The queuequeue containing the durations of the co
 
 ## Practice problems
 
+* [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) 
+::: details View solution
+
+```go
+type Entry struct{
+    Num int
+    Count int
+}
+type MinHeap []Entry
+
+func (h MinHeap) Len() int{
+    return len(h)
+}
+
+func (h MinHeap) Less(i,j int) bool{
+    return h[i].Count < h [j].Count
+}
+
+func (h MinHeap) Swap(i,j int) {
+    h[i], h[j] = h[j], h[i]
+}
+
+func (h *MinHeap) Pop() interface{}{
+    pop := (*h)[len(*h) - 1]
+    *h = (*h)[:len(*h) - 1]
+    return pop
+}
+
+func (h *MinHeap) Push(x interface{}){
+    *h = append((*h),x.(Entry))
+}
+
+func topKFrequent(nums []int, k int) []int {
+    //count frequent
+    count := map[int]int{}
+    for _, num := range nums{
+        count[num]++
+    }
+        
+    //use min heap, keep k size element
+    minHeap := &MinHeap{}
+    heap.Init(minHeap)
+
+    for key,val := range count{
+        if minHeap.Len() < k{
+            heap.Push(minHeap,Entry{Num:key,Count:val})
+            continue
+        }
+        if val > (*minHeap)[0].Count{
+            heap.Push(minHeap,Entry{Num:key,Count:val})
+            heap.Pop(minHeap)
+        }
+    }
+    
+    ret := []int{}
+    for _, element := range *minHeap{
+        ret = append(ret, element.Num) 
+    }
+    return ret
+}
+```
+:::
+---
+
+* [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/) 
+::: details View solution
+
+```go
+// min heap
+type MinHeap []int
+
+func (h MinHeap) Len() int { return len(h) }
+
+func (h MinHeap) Less(i,j int) bool{ return h[i] < h[j] }
+
+func (h MinHeap) Swap(i,j int){ h[i], h[j] = h[j], h[i] }
+
+func (h *MinHeap) Pop() interface{}{
+    pop := (*h)[len(*h)-1]
+    *h = (*h)[:len(*h)-1]
+    return pop
+}
+
+func (h *MinHeap) Push(x interface{}){
+    *h = append(*h,x.(int))
+}
+
+// use min heap, keep min heap size == k
+// because minHeap[0] is the smallest element in heap
+// iterate the rest push and pop if greater than minHeap[0]
+// after iteration, minHeap has largest k nums, and minHeap[0] is the k largest
+
+func findKthLargest(nums []int, k int) int {
+    minHeap := &MinHeap{}
+    heap.Init(minHeap)
+    
+    for i := 0; i < k; i++{
+        heap.Push(minHeap,nums[i])
+    } 
+    
+    for i := k; i < len(nums); i++{
+        if nums[i] > (*minHeap)[0]{
+            heap.Push(minHeap,nums[i])
+            heap.Pop(minHeap)            
+        }
+    }
+    return (*minHeap)[0]
+}
+```
+:::
+---
+
 * [630. Course Schedule III](https://leetcode.com/problems/course-schedule-iii/) 
 ::: details View solution
 
