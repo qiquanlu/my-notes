@@ -172,6 +172,63 @@ Space complexity : ***O(n)***. The queuequeue containing the durations of the co
 
 ## Practice problems
 
+
+* [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/) 
+::: details View solution
+
+```go
+func minMeetingRooms(intervals [][]int) int {
+    // sort intervals by start time
+    sort.Slice(intervals,func(i,j int) bool{
+        return intervals[i][0] < intervals[j][0]
+    })
+    minHeap := &MinHeap{}
+    heap.Init(minHeap)
+    for _,interval := range intervals{
+        // when heap is empty
+        if minHeap.Len() == 0{
+            heap.Push(minHeap,interval[1])
+            continue
+        }
+        // when heap not empty
+        nextEndtime := (*minHeap)[0]
+        // when current meeting start after existing meeting, 
+        // there is no need to allocate another room, we can 
+        // pop existing one and push new one
+        if interval[0] >= nextEndtime{
+            heap.Pop(minHeap)
+        }
+        heap.Push(minHeap,interval[1])
+    }
+    return minHeap.Len()
+}
+
+type MinHeap []int
+
+func(h MinHeap) Len() int{
+    return len(h)
+}
+
+func(h MinHeap) Less(i, j int) bool{
+    return h[i] < h[j]
+}
+
+func(h MinHeap) Swap(i, j int){
+    h[i], h[j] = h[j], h[i]
+}
+
+func(h *MinHeap) Push(x interface{}) {
+    *h = append(*h, x.(int))
+}
+
+func(h *MinHeap) Pop() interface{}{
+    pop := (*h)[len(*h)-1]
+    *h = (*h)[:len(*h)-1]
+    return pop
+}
+```
+:::
+---
 * [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/) 
 ::: details View solution
 
