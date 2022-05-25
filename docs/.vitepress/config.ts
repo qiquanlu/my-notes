@@ -39,6 +39,12 @@ function getAlgoSidebar() {
       ],
     },
     {
+      text: "Search",
+      children: [
+        { text: "Binary Search", link: "/search/binary-search" }
+      ],
+    },
+    {
       text: "DP",
       children: [
         { text: "Time Series DP", link: "/dp/time-series-dp" },
