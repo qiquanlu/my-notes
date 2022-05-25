@@ -39,11 +39,7 @@ func find(x int) int{
 ::: details View solution
 
 ```go
-func solution(input [][]int) int {
-    n := len(input)
-    // some awesome algo
-    return n
-}
+// TODO
 ```
 :::
 ---

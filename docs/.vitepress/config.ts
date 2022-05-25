@@ -41,7 +41,10 @@ function getAlgoSidebar() {
     {
       text: "DP",
       children: [
-        { text: "Time Series DP", link: "/dp/time-series-dp" }
+        { text: "Time Series DP", link: "/dp/time-series-dp" },
+        { text: "Time Series Multiple States DP", link: "/dp/time-series-multiple-states-dp" },
+        { text: "Dual Sequences DP", link: "/dp/dual-sequences-dp" },
+        { text: "K Range DP", link: "/dp/k-range-dp" },
       ],
     },
     {

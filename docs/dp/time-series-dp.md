@@ -9,30 +9,18 @@ sidebarDepth: 3
 *  find max, min or sum
 :::
 
-
-
 ## Implementation 
-
 
 ### define ***dp[i][j]***
 
 define ***dp[i][j]*** which represent the state j of day i
 
-```go
-// some code
-```
 
 ### state transition equation
 find an equation to represent ***d[i][j]*** only using ***d[i-1][j]*** 
-```go
-// some code
-```
 
 ### aggregation of ***d[last][j]***
 usually find solution by min, max, or sum of ***d[last][j]***
-```go
-// some code
-```
 
 ## Complexity 
 
