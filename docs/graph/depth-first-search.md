@@ -185,3 +185,72 @@ func (this *Codec) deserialize(data string) *TreeNode {
 ```
 :::
 ---
+
+
+* [200. Number of Islands](https://leetcode.com/problems/number-of-islands/solution/) 
+::: details View solution
+
+```go
+func numIslands(grid [][]byte) int {
+    dirs := [][2]int{{-1,0},{0,-1},{1,0},{0,1}}
+    m, n := len(grid), len(grid[0])
+    count := 0 
+    var dfs func(int, int)
+    dfs = func(i,j int){
+        grid[i][j] = '0'
+        for _, dir := range dirs{
+            x, y := i + dir[0], j + dir[1]
+            if x < 0 || y < 0 || x >= m ||y >= n || grid[x][y] != '1'{
+                continue
+            }
+            dfs(x,y)
+        }
+    }
+    for i := 0; i < m; i++{
+        for j := 0; j < n ;j++{
+            if grid[i][j] == '1'{
+                count++
+                dfs(i,j)
+            }
+        }
+    }
+    return count
+}
+```
+:::
+---
+* [133. Clone Graph](https://leetcode.com/problems/clone-graph/) 
+::: details View solution
+
+```go
+/**
+ * Definition for a Node.
+ * type Node struct {
+ *     Val int
+ *     Neighbors []*Node
+ * }
+ */
+
+func cloneGraph(node *Node) *Node {
+    var dfs func(*Node) *Node
+    mapping := map[*Node]*Node{}
+    dfs = func(node *Node) *Node{
+        if node == nil{
+            return nil
+        }
+        clone := &Node{Val:node.Val}
+        mapping[node] = clone
+        for _,neighbor := range node.Neighbors{
+            if val,found := mapping[neighbor];found{
+                clone.Neighbors = append(clone.Neighbors,val)
+            }else{
+                clone.Neighbors = append(clone.Neighbors,dfs(neighbor))
+            }
+        }
+        return clone
+    }
+    return dfs(node)
+}
+```
+:::
+---

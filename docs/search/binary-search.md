@@ -76,6 +76,7 @@ func search(nums []int, target int) int {
     }
     return -1
 }
+```
 :::
 ---
 
@@ -83,7 +84,44 @@ func search(nums []int, target int) int {
 ::: details View solution
 
 ```go
-// TODO
+func search(nums []int, target int) int {
+    // find rotation index
+    l,r := 0, len(nums) - 1
+    for l < r{
+        m := l + (r - l) / 2
+        if nums[m] <= nums[l]{
+            r = m
+        }else{
+            l = m
+        }
+    }
+    first := bsearch(nums[:r+1],target)
+    if first >= 0 {
+        return first
+    }
+    second := bsearch(nums[r+1:],target)
+    if second >= 0{
+        return l+1 + second 
+    }
+    return -1
+   
+}
+func bsearch(nums []int,target int) int{
+    l,r := 0,len(nums)-1
+    for l <= r{
+        m := l +(r-l)/2
+        if nums[m] == target{
+            return m
+        }
+        if nums[m] > target{
+            r = m -1
+        }else{
+            l = m + 1
+        }
+        
+    }
+    return -1
+}
 ```
 :::
 ---

@@ -29,26 +29,33 @@ function getAlgoSidebar() {
       children: [
         { text: "Disjoint Sets", link: "/graph/disjoint-set" },
         { text: "Topological Sort", link: "/graph/topological-sort" },
-        { text: "Depth First Search", link: "/graph/depth-first-search" }
+        { text: "Depth First Search", link: "/graph/depth-first-search" },
       ],
     },
     {
       text: "Sorting",
-      children: [
-        { text: "Heap", link: "/sorting/heapsort" }
-      ],
+      children: [{ text: "Heap", link: "/sorting/heapsort" }],
+    },
+    {
+      text: "Queue",
+      children: [{ text: "Queue", link: "/queue/queue" }],
+    },
+    {
+      text: "Stack",
+      children: [{ text: "Stack", link: "/stack/stack" }],
     },
     {
       text: "Search",
-      children: [
-        { text: "Binary Search", link: "/search/binary-search" }
-      ],
+      children: [{ text: "Binary Search", link: "/search/binary-search" }],
     },
     {
       text: "DP",
       children: [
         { text: "Time Series DP", link: "/dp/time-series-dp" },
-        { text: "Time Series Multiple States DP", link: "/dp/time-series-multiple-states-dp" },
+        {
+          text: "Time Series Multiple States DP",
+          link: "/dp/time-series-multiple-states-dp",
+        },
         { text: "Dual Sequences DP", link: "/dp/dual-sequences-dp" },
         { text: "K Range DP", link: "/dp/k-range-dp" },
       ],
@@ -59,4 +66,3 @@ function getAlgoSidebar() {
     },
   ];
 }
-
