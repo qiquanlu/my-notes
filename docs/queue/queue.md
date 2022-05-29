@@ -40,6 +40,64 @@ Dequeue is simply remove the first element from the slice
 
 ## Practice problems
 
+* [542. 01 Matrix](https://leetcode.com/problems/01-matrix/) 
+::: details View solution
+
+```go
+func updateMatrix(mat [][]int) [][]int {
+    m, n := len(mat), len(mat[0])
+    res := make([][]int,m)
+    for i := range res{
+        res[i] = make([]int, n)
+    }
+    queue := [][2]int{}
+    
+    for i := 0;i < m; i++{
+        for j := 0; j < n; j++{
+            if mat[i][j] == 0{
+                queue = append(queue,[2]int{i,j})
+                res[i][j] = 0
+            }else{
+                res[i][j] = math.MaxInt32
+            }
+        }
+    }
+    dirs := [][2]int{{1,0},{-1,0},{0,1},{0,-1}}
+    for len(queue) > 0{
+        pop := queue[0]
+        queue = queue[1:]
+        for _, dir := range dirs{
+            x, y := pop[0] + dir[0], pop[1] + dir[1]
+            if x < 0 || y < 0 || x >= m || y >= n{
+                continue
+            } 
+            if res[x][y] > res[pop[0]][pop[1]] + 1{
+                res[x][y] = res[pop[0]][pop[1]] + 1
+                queue = append(queue,[2]int{x,y})
+            }
+        }
+    }
+    return res
+}
+```
+:::
+---
+* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+::: details View solution
+
+```go
+// TODO
+```
+:::
+---
+* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+::: details View solution
+
+```go
+// TODO
+```
+:::
+---
 * [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
 ::: details View solution
 
