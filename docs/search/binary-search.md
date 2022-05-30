@@ -125,3 +125,31 @@ func bsearch(nums []int,target int) int{
 ```
 :::
 ---
+
+* [167. Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/) 
+::: details View solution
+
+```go
+func twoSum(numbers []int, target int) []int {
+    n := len(numbers)
+    for i := 0;i < n; i++{
+        // find target - numbers[i] between numbers[i,n]
+        l, r := i+1, n-1
+        for l <= r{
+            m := l + (r- l)/2
+            if numbers[m] == target - numbers[i]{
+                return []int{i+1,m+1}
+            }
+            if numbers[m] < target - numbers[i]{
+                l = m + 1
+            }else{
+                r = m -1
+            }
+        }
+    }
+    return []int{-1,-1}
+}
+```
+:::
+---
+

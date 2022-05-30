@@ -82,11 +82,57 @@ func updateMatrix(mat [][]int) [][]int {
 ```
 :::
 ---
-* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+* [752. Open the Lock](https://leetcode.com/problems/open-the-lock/) 
 ::: details View solution
 
 ```go
-// TODO
+func openLock(deadends []string, target string) int {
+    if target == "0000"{
+        return 0
+    }
+    isDeadends := make(map[string]bool)
+    for _,deadend := range deadends{
+        if deadend == "0000"{
+            return -1
+        }
+        isDeadends[deadend] = true
+    }
+    queue := []string{"0000"}
+    count := 0
+    for len(queue) > 0{
+        size := len(queue)
+        count++
+        for i := 0; i < size; i++{
+            pop := queue[0]
+            queue = queue[1:]     
+            for k := 0; k < 4; k++{
+                nexts := nextCombs(pop,k)
+                for _,next := range nexts{
+                    if next == target{
+                        return count
+                    }
+                    if !isDeadends[next]{
+                        isDeadends[next] = true
+                        queue = append(queue,next)
+                    }
+                }
+            }
+        }     
+    }
+    return -1
+}
+func nextCombs(comb string,index int) []string{
+    bytes := []byte(comb)
+    num := int(bytes[index] - '0')
+    pre := (10+num-1) % 10
+    next := (num+1) % 10
+    res := []string{}
+    bytes[index] = byte('0' + pre)
+    res = append(res,string(bytes))
+    bytes[index] = byte('0' + next)
+    res = append(res,string(bytes))
+    return res
+}
 ```
 :::
 ---
