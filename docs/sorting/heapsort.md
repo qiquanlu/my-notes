@@ -166,7 +166,7 @@ func main() {
 
 ## Complexity 
 
-Time complexity : ***O(nlogn)***. At most nn elements are added to the queuequeue. Adding each element is followed by heapification, which takes ***O(logn)*** time.
+Time complexity : ***O(nlogn)***. At most n elements are added to the queue. Adding each element is followed by heapification, which takes ***O(logn)*** time.
 
 Space complexity : ***O(n)***. The queuequeue containing the durations of the courses taken can have atmost nn elements
 
