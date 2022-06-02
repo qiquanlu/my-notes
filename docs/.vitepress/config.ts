@@ -6,11 +6,8 @@ export default defineConfig({
   description: "Just some of my notes",
   lastUpdated: true,
   themeConfig: {
-    lastUpdated: "Last updated",
-    sidebar: {
-      "/graph/": getAlgoSidebar(),
-      "/": getAlgoSidebar(),
-    },
+    // lastUpdated: "Last updated",
+    sidebar: getSidebar(),
     algolia: {
       appId: "notes",
       apiKey: "495987734899310faf980596d8d8da41",
@@ -22,11 +19,11 @@ export default defineConfig({
   },
 });
 
-function getAlgoSidebar() {
+function getSidebar() {
   return [
     {
       text: "Graph",
-      children: [
+      items: [
         { text: "Disjoint Sets", link: "/graph/disjoint-set" },
         { text: "Topological Sort", link: "/graph/topological-sort" },
         { text: "Depth First Search", link: "/graph/depth-first-search" },
@@ -34,23 +31,23 @@ function getAlgoSidebar() {
     },
     {
       text: "Sorting",
-      children: [{ text: "Heap", link: "/sorting/heapsort" }],
+      items: [{ text: "Heap", link: "/sorting/heapsort" }],
     },
     {
       text: "Queue",
-      children: [{ text: "Queue", link: "/queue/queue" }],
+      items: [{ text: "Queue", link: "/queue/queue" }],
     },
     {
       text: "Stack",
-      children: [{ text: "Stack", link: "/stack/stack" }],
+      items: [{ text: "Stack", link: "/stack/stack" }],
     },
     {
       text: "Search",
-      children: [{ text: "Binary Search", link: "/search/binary-search" }],
+      items: [{ text: "Binary Search", link: "/search/binary-search" }],
     },
     {
       text: "DP",
-      children: [
+      items: [
         { text: "Time Series DP", link: "/dp/time-series-dp" },
         {
           text: "Time Series Multiple States DP",
@@ -62,7 +59,7 @@ function getAlgoSidebar() {
     },
     {
       text: "Resources",
-      children: [{ text: "Links", link: "/resource-links" }],
+      items: [{ text: "Links", link: "/resource-links" }],
     },
   ];
 }
