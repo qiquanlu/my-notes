@@ -27,8 +27,6 @@ prev.Next = cur
 
 Unlike an array, we don’t need to move all elements past the inserted element. Therefore, you can insert a new node into a linked list in ***O(1)*** time complexity, which is very efficient.
 
-
-
 ### add at beginning
 We can add a new node in front of a linked list ***head***.
 

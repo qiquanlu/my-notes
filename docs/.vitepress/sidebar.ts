@@ -9,6 +9,12 @@ export const getSidebar = () => {
             ],
         },
         {
+            text: "Recursion",
+            items: [
+                { text: "Backtracking", link: "/recursion/backtracking" },
+            ],
+        },
+        {
             text: "Linked List",
             items: [
                 { text: "Singly Linked List", link: "/linked-list/singly-linked-list" },
