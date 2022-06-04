@@ -48,9 +48,5 @@ export const getSidebar = () => {
                 { text: "K Range DP", link: "/dp/k-range-dp" },
             ],
         },
-        {
-            text: "Resources",
-            items: [{ text: "Links", link: "/resource-links" }],
-        },
     ];
 }

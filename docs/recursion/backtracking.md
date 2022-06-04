@@ -135,11 +135,57 @@ func totalNQueens(n int) int {
 ```
 :::
 ---
-* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+* [489. Robot Room Cleaner](https://leetcode.com/problems/robot-room-cleaner/) 
 ::: details View solution
 
 ```go
-// TODO
+/**
+ * // This is the robot's control interface.
+ * // You should not implement it, or speculate about its implementation
+ * type Robot struct {
+ * }
+ * 
+ * // Returns true if the cell in front is open and robot moves into the cell.
+ * // Returns false if the cell in front is blocked and robot stays in the current cell.
+ * func (robot *Robot) Move() bool {}
+ *
+ * // Robot will stay in the same cell after calling TurnLeft/TurnRight.
+ * // Each turn will be 90 degrees.
+ * func (robot *Robot) TurnLeft() {}
+ * func (robot *Robot) TurnRight() {}
+ *
+ * // Clean the current cell.
+ * func (robot *Robot) Clean() {}
+ */
+
+func cleanRoom(robot *Robot) {
+    dirs := [][2]int{{0,1},{1,0},{0,-1},{-1,0}}
+    visited := make(map[[2]int]bool)
+    
+    var backtracking func(int, int, int)
+    backtracking = func(x, y, dir int){
+        //clean current
+        robot.Clean()
+        visited[[2]int{x,y}] = true
+        // try move four directions
+        for i := 0; i < 4; i++{
+            nextDir := (dir + i) % 4
+            nextX, nextY := x + dirs[nextDir][0], y + dirs[nextDir][1]
+            if !visited[[2]int{nextX,nextY}] && robot.Move(){
+                backtracking(nextX,nextY,nextDir)
+
+                // move back
+                robot.TurnRight()
+                robot.TurnRight()
+                robot.Move()
+                robot.TurnLeft()
+                robot.TurnLeft()
+            }
+            robot.TurnRight()
+        } 
+    }
+    backtracking(0,0,0)
+}
 ```
 :::
 ---

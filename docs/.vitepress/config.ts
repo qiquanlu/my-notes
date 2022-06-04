@@ -8,6 +8,10 @@ export default defineConfig({
   lastUpdated: true,
   themeConfig: {
     sidebar: getSidebar(),
+    nav: nav(),
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/qiquanlu/my-notes' }
+    ],
     algolia: {
       appId: "notes",
       apiKey: "495987734899310faf980596d8d8da41",
@@ -18,3 +22,8 @@ export default defineConfig({
     lineNumbers: true,
   },
 });
+function nav() {
+  return [
+    { text: 'Resources', link: '/resource-links' },
+  ]
+}

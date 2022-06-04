@@ -3,12 +3,12 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-    --vp-c-brand: #646cff;
-    --vp-c-brand-light: #747bff;
-    --vp-c-brand-lighter: #9499ff;
-    --vp-c-brand-dark: #535bf2;
-    --vp-c-brand-darker: #454ce1;
-    --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+    --vp-c-brand: #0071c8;
+    --vp-c-brand-light: #0080c8;
+    --vp-c-brand-lighter: #00a0c8;
+    --vp-c-brand-dark: #005fbe;
+    --vp-c-brand-darker: #004fb0;
+    --vp-c-brand-dimm: rgba(0, 113, 200, 0.08);
 }
 
 /**
