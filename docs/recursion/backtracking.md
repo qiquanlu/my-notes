@@ -189,27 +189,158 @@ func cleanRoom(robot *Robot) {
 ```
 :::
 ---
-* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+* [78. Subsets](https://leetcode.com/problems/subsets/) 
 ::: details View solution
 
 ```go
-// TODO
+func subsets(nums []int) [][]int {
+    var backtracking func(int,int)
+    res := [][]int{}
+    cur := []int{}
+    backtracking = func(index,length int){
+        // when cur length is what we wanted, add cur to result and return
+        if len(cur) >= length{
+            cpy := make([]int,len(cur))
+            copy(cpy,cur)
+            res = append(res,cpy)
+            return
+        }
+        // otherwise from index to last element of nums, we try backtracking
+        for i := index; i < len(nums); i++{
+            // add to cur
+            cur = append(cur,nums[i])
+            // do the backtracking for next element
+            backtracking(i+1,length)
+            // remove from cur
+            cur = cur[:len(cur)-1]            
+        }
+    }
+    
+    // we need find all subsets from length 0 to len(nums)
+    for n := 0; n <= len(nums); n++{
+        backtracking(0,n)
+    }
+    return res
+}
 ```
 :::
 ---
-* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+* [491. Increasing Subsequences](https://leetcode.com/problems/increasing-subsequences/) 
 ::: details View solution
 
 ```go
-// TODO
+func findSubsequences(nums []int) [][]int {
+    res := [][]int{}
+    cur := []int{}
+
+    var backtracking func(int)
+    backtracking =  func(index int){
+        // When len(cur) > 1, we save cur to result
+        if len(cur) > 1{
+            cpy := make([]int,len(cur))
+            copy(cpy,cur)
+            res = append(res, cpy)
+        }
+        
+        seen := map[int]bool{}
+
+        // from starting index to the last element
+        // we want to find all the increasing subsequences start with nums[index]
+        for i:= index; i < len(nums);i++{
+            if seen[nums[i]]{
+                continue
+            }
+            if len(cur) == 0{
+                seen[nums[i]] = true
+                cur = append(cur,nums[i])
+                backtracking(i+1)
+                cur = cur[:len(cur)-1] 
+                continue
+            }
+            if nums[i] >= cur[len(cur)-1] && !seen[nums[i]]{
+                cur = append(cur,nums[i])
+                backtracking(i+1)
+                seen[cur[len(cur)-1]] = true
+                cur = cur[:len(cur)-1] 
+            }
+        }
+    }
+    backtracking(0)
+    return res
+    
+}
 ```
 :::
 ---
-* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+* [37. Sudoku Solver](https://leetcode.com/problems/sudoku-solver/) 
 ::: details View solution
 
 ```go
-// TODO
+func solveSudoku(board [][]byte)  {
+    // divide board into 9 subboard from 0 to 8
+    // try to fill each subboard
+    // initialize rows, cols, subs 2D arrays to keep track which number already exist
+    // for example rows[3][6] is true means the 4th row(index 3) already have 7(index 6) in it
+    rows,cols,subs := make([][]bool,9), make([][]bool,9), make([][]bool,9)
+    for i := 0; i < 9; i++{
+        rows[i], cols[i], subs[i]= make([]bool,9), make([]bool,9), make([]bool,9)
+    }
+
+    // search existing board, fill all rows, cols and subs
+    for i := 0; i < 9; i++{
+        for j := 0; j < 9; j++{
+            if board[i][j] != '.'{
+                num := int(board[i][j] - '0')
+                rows[i][num-1] = true
+                cols[j][num-1] = true
+                sub := (i/3) * 3 + j / 3
+                subs[sub][num-1] = true
+            }
+        }
+    }
+
+    var backtracking func(int,int) bool
+    backtracking = func(x,y int) bool{
+        // when row index > 8 means, we already filled all first 9 row, then done
+        if x > 8{
+            return true
+        } 
+        
+        // we go from left to righ, top to bottom, and next location we will be visiting is nextX,nextY
+        nextX := x + (y+1) / 9
+        nextY := (y+1) % 9
+        if board[x][y] == '.'{
+            // when current position is empty, we try to fill it from 1 to 9
+            for num := 1; num <= 9; num++{
+                sub := (x/3) * 3 + y / 3
+                // if the number we are trying is not valid, move to next
+                if rows[x][num-1] || cols[y][num-1] || subs[sub][num-1]{
+                    continue
+                }
+                //fill the number
+                board[x][y] = byte('0'+ num)
+                rows[x][num-1] = true
+                cols[y][num-1] = true
+                subs[sub][num-1] = true
+                
+                // stop further process if backtracking returns true
+                if backtracking(nextX,nextY){
+                    return true
+                }
+                //remove the number, so we can try next one
+                board[x][y] = '.'
+                rows[x][num-1] = false
+                cols[y][num-1] = false
+                subs[sub][num-1] = false
+            }
+            return false
+            
+        }else{
+             return backtracking(nextX,nextY)
+        }
+    }
+    backtracking(0,0)
+}
 ```
 :::
 ---
