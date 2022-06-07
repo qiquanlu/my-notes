@@ -344,3 +344,44 @@ func solveSudoku(board [][]byte)  {
 ```
 :::
 ---
+* [93. Restore IP Addresses](https://leetcode.com/problems/restore-ip-addresses/) 
+::: details View solution
+
+```go
+func restoreIpAddresses(s string) []string {
+  res := []string{}
+  n := len(s)
+  cur := []string{}
+  var backtracking func(int)
+  backtracking = func(start int){
+    if start >= n{
+      if len(cur) == 4{
+        res = append(res,strings.Join(cur,"."))
+      }
+      return
+    }
+    // when start with '0', it has to be a 0, move to next
+    if s[start] == '0'{
+      cur = append(cur,"0")
+      backtracking(start+1)
+      cur = cur[:len(cur)-1]
+      return
+    }
+    // otherwise try first 3 digits
+    for i := start; i<n && i < i+3; i++{
+      curString := string(s[start:i+1])
+      num,_ := strconv.Atoi(curString)
+      if num > 255{
+        break
+      }
+      cur = append(cur,curString)
+      backtracking(i+1)
+      cur = cur[:len(cur)-1]
+    }
+  }
+  backtracking(0)
+  return res
+}
+```
+:::
+---
