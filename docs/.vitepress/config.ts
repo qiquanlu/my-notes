@@ -10,7 +10,7 @@ export default defineConfig({
     sidebar: getSidebar(),
     nav: nav(),
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/qiquanlu/my-notes' }
+      { icon: "github", link: "https://github.com/qiquanlu/my-notes" },
     ],
     algolia: {
       appId: "notes",
@@ -24,6 +24,8 @@ export default defineConfig({
 });
 function nav() {
   return [
-    { text: 'Resources', link: '/resource-links' },
-  ]
+    { text: "Resources", link: "/resource-links" },
+    { text: "Learn", link: "/learn/index" },
+    { text: "OA", link: "/oa/oa" },
+  ];
 }
