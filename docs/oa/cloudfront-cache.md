@@ -64,3 +64,99 @@ Explanation
 * Set {1,5,6,8}: c = ceil(sqrt(4)) = 2
 * Set {3,7}: c = ceil(sqrt(2)) = 2
 * return 1+1+2+2 = 6
+
+## Intuition
+::: details View intuition
+Connected edges should think of union find
+:::
+
+[Playground](https://leetcode.com/playground/Bwck49cF)
+::: details View code
+```go
+func connectedSum(n int, edges [][]int) int{
+    roots := make([]int,n)
+    for i := range roots{
+        roots[i] = i
+    }
+    var find func(x int) int
+    find = func(x int) int{
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    
+    union := func(x,y int){
+        xroot := find(x)
+        yroot := find(y)
+        if xroot != yroot{
+            roots[yroot] = xroot
+        }
+    }
+    
+    for _,edge := range edges{
+        union(edge[0]-1,edge[1]-1)
+    }
+    
+    counts := map[int]int{}
+    for i := range roots{
+        counts[find(i)]++
+    }
+    res := 0
+    for _,count := range counts{
+        if count == 1{
+            res++
+            continue
+        }
+        if count < 1{
+            continue
+        }
+        t := math.Ceil(math.Sqrt(float64(count)))
+        res += int(t)
+    }
+    return res
+}
+```
+:::
+
+## Leetcode Practice
+* [323. Number of Connected Components in an Undirected Graph](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/)
+::: details View solution
+
+```go
+func countComponents(n int, edges [][]int) int {
+    roots := make([]int,n)
+    for i := range roots{
+        roots[i] = i
+    }
+    
+    var find func(int)int
+    find = func(x int) int{
+        if roots[x] != x{
+            roots[x] = find(roots[x])
+        }
+        return roots[x]
+    }
+    
+    union := func(x, y int){
+        xroot := find(x)
+        yroot := find(y)
+        if xroot != yroot{
+            roots[yroot] = xroot
+        }
+    }
+    
+    for _,edge := range edges{
+        union(edge[0],edge[1])
+    }
+    
+    count:= 0
+    for i := range roots{
+        if i == find(i){
+            count++
+        }
+    }
+    return count
+}
+```
+:::
