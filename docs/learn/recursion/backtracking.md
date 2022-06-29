@@ -384,4 +384,59 @@ func restoreIpAddresses(s string) []string {
 }
 ```
 :::
+* [47. Permutations II](https://leetcode.com/problems/permutations-ii/) 
+::: details View solution
+
+```go
+func permuteUnique(nums []int) [][]int {
+    res := [][]int{}
+    n := len(nums)
+    var backtracking func(int)
+    backtracking = func(start int){
+        if start >= n{
+            cpy := make([]int,n)
+            copy(cpy,nums)
+            res = append(res, cpy)
+            return
+        }
+        
+        seen := make(map[int]bool)
+        for i := start; i < n; i++{
+            if !seen[nums[i]]{
+                seen[nums[i]] = true
+                nums[start],nums[i] = nums[i],nums[start]
+                backtracking(start + 1)
+                nums[start],nums[i] = nums[i],nums[start]                
+            }
+        }
+    }
+    backtracking(0)
+    return res
+}
+```
+:::
+---
+* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+::: details View solution
+
+```go
+// TODO
+```
+:::
+---
+* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+::: details View solution
+
+```go
+// TODO
+```
+:::
+---
+* [xxx. Some LeetCode Problem](https://leetcode.com/problems/some-leetcode-problem/) 
+::: details View solution
+
+```go
+// TODO
+```
+:::
 ---
