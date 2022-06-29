@@ -6,7 +6,8 @@ sidebarDepth: 3
 ::: tip Where the OA comes from?
 The OA problems are from Internet, mostly from leetcode discussions. They are free and available everywhere, so don't trust anyone ask money to access these OA,
 :::
-
+![image1](./img/valid-coupon-1.png)
+![image1](./img/valid-coupon-2.png)
 At Amazon's annual sale. employees are tasked with generating valid discount coupons for loyal customers. However, there are some used/invalid coupons in the mix and the challenge in this task is to determine whether a given discount coupon is valid or not.
 
 The validity of a discount coupon is determined as follows:
