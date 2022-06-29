@@ -42,3 +42,67 @@ The longest segment is 23,36 and it is 14 elements long, thus the return value i
 
 badNumbers contains distinct elements
 
+## Intuition
+::: details View intuition
+Sort bad_numbers
+
+adding upper+1 to bad_numbers
+:::
+
+[Playground](https://leetcode.com/playground/jM8HAoPT)
+::: details View code
+```go
+func longestSegment(bad_numbers []int ,lower,upper int) int{
+    sort.Ints(bad_numbers)
+    left := sort.Search(len(bad_numbers),func(i int)bool{ return bad_numbers[i] >= lower})
+    right := sort.Search(len(bad_numbers),func(i int)bool{ return bad_numbers[i] > upper})
+    bad_numbers = bad_numbers[left:right]
+    bad_numbers = append(bad_numbers,upper+1)
+    res := 0
+    prev := lower-1
+    for i := range bad_numbers{
+        res = max(res,bad_numbers[i] - prev -1)
+        prev = bad_numbers[i]
+    }
+    return res
+}
+
+func max(a, b int) int{
+    if a > b{
+        return a
+    }
+    return b
+}
+
+```
+:::
+
+## Leetcode Practice
+* [163. Missing Ranges](https://leetcode.com/problems/missing-ranges/)
+::: details View solution
+
+```go
+func findMissingRanges(nums []int, lower int, upper int) []string {
+    nums = append(nums,upper+1)
+    prev := lower - 1
+    res := []string{}
+    for i := range nums{
+        if nums[i] - prev > 1{
+            res = append(res,getRange(prev+1,nums[i]-1))
+        }            
+        prev = nums[i]
+    }
+    return res
+}
+
+func getRange(low,high int) string{
+    if low == high{
+        return strconv.Itoa(low)
+    }
+    if high > low{
+        return fmt.Sprintf("%d->%d",low,high)
+    }
+    return ""
+}
+```
+:::
