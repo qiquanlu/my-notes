@@ -42,3 +42,42 @@ String “abzx” encoded as “1226#24#”.
 * It is guaranteed that string s is a valid encoded string.
 * 2<=c<=10^4, where c is a parenthetical count of consecutive occurrences of an encoded character.
 
+:::
+
+[Playground](https://leetcode.com/playground/DkPKDf8v)
+::: details View code
+```go
+func DecodeString(s string)string{
+    stringGroups := strings.Split(s,")")
+    res := []string{}
+    for _,stringGroup := range stringGroups{    
+        array := strings.Split(stringGroup,"(")
+        str := array[0]
+        repeat := 1
+        if len(array) > 1{
+            repeat,_ = strconv.Atoi(array[1])
+        }
+        res = append(res,helper(str,repeat))
+    }
+    return strings.Join(res,"")
+}
+
+func helper(s string,repeat int)string{
+    bytes := []byte{}
+    n := len(s)
+    for i := 0; i < n; i++{
+        if i < n-2 && s[i+2] == '#'{
+            num ,_ := strconv.Atoi(s[i:i+2])
+            bytes = append(bytes,byte('a' + num - 1))
+            i = i+2
+            continue
+        }
+        bytes = append(bytes,(s[i] - '1' + 'a'))
+    }
+    for i := 1; i<repeat;i++{
+        bytes = append(bytes,bytes[len(bytes)-1])
+    }
+    return string(bytes)
+}
+```
+:::

@@ -45,3 +45,11 @@ fiveStarReviews has the following parameters:
 * The array productRatings contains only non-negative integers.
 
 :::
+
+## Leetcode Practice
+* [1792. Maximum Average Pass Ratio](https://leetcode.com/problems/maximum-average-pass-ratio/)
+::: details View solution
+
+```go
+```
+:::

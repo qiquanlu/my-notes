@@ -4,12 +4,12 @@ export const getOaSidebar = () => {
       text: "OA from Internet",
       items: [
         {
-          text: "Amazon Annual Sale/Valid Discount Coupon",
+          text: "✅ Amazon Annual Sale/Valid Discount Coupon",
           link: "/oa/amazon-annual-sale",
         },
-        { text: "Bad Numbers", link: "/oa/bad-numbers" },
-        { text: "Cloudfront Caching", link: "/oa/cloudfront-cache" },
-        { text: "Decode Encoded String", link: "oa/decode-encoded-string" },
+        { text: "✅ Bad Numbers", link: "/oa/bad-numbers" },
+        { text: "✅ Cloudfront Caching", link: "/oa/cloudfront-cache" },
+        { text: "✅ Decode Encoded String", link: "oa/decode-encoded-string" },
         { text: "Five Star Sellers", link: "/oa/five-star-sellers" },
         { text: "Form Hackathon Teams", link: "oa/form-hackathon-teams" },
         { text: "Investment Strategy", link: "oa/investment-strategy" },
