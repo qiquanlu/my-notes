@@ -46,10 +46,101 @@ fiveStarReviews has the following parameters:
 
 :::
 
+[Playground](https://leetcode.com/playground/DBKWkZii)
+::: details View code
+
+```go
+func main() {
+    ratings := [][2]int{{4,4},{1,2},{3,6}}
+    threshold := 77
+    fmt.Println(minFiveStartReviews(ratings, threshold))
+}
+type MaxHeap [][2]int
+func (h MaxHeap) Len() int{ return len(h) }
+func (h MaxHeap) Less(i, j int) bool{ return profit(h[i]) > profit(h[j]) }
+func (h MaxHeap) Swap(i, j int) { h[i], h[j] = h[j], h[i] }
+func (h *MaxHeap) Pop() interface{}{
+    x := (*h)[len(*h)-1]
+    *h = (*h)[:len(*h)-1]
+    return x
+}
+func (h *MaxHeap) Push(x interface{}) {
+    *h = append(*h, x.([2]int))
+}
+
+func profit(x [2]int) float64{
+    return float64(x[0]+1)/float64(x[1]+1) - float64(x[0])/float64(x[1])
+}
+func minFiveStartReviews(ratings [][2]int, threshold int) int{
+    maxHeap := &MaxHeap{}
+    current := 0.0
+    heap.Init(maxHeap)
+    for _,rating := range ratings{
+        heap.Push(maxHeap,[2]int{rating[0],rating[1]})
+        current += float64(rating[0])/float64(rating[1])
+    }
+    extra := 0
+    target := float64(threshold)/100 * float64(len(ratings))
+    for current <= target{
+        extra++
+        pop := heap.Pop(maxHeap).([2]int)
+        current += profit(pop)
+        pop[0]++
+        pop[1]++
+        heap.Push(maxHeap,pop)
+    }
+    return extra
+}
+```
+:::
+
 ## Leetcode Practice
 * [1792. Maximum Average Pass Ratio](https://leetcode.com/problems/maximum-average-pass-ratio/)
 ::: details View solution
 
 ```go
+
+type MaxHeap [][2]int
+
+func (h MaxHeap) Len() int{
+    return len(h)
+}
+func (h MaxHeap) Less(i, j int) bool{
+    return profit(h[i]) > profit(h[j])
+}
+func (h MaxHeap) Swap(i, j int){
+    h[i], h[j] = h[j], h[i]
+}
+func (h *MaxHeap) Push(x interface{}){
+    *h = append(*h, x.([2]int))
+}
+func (h *MaxHeap) Pop() interface{}{
+    x := (*h)[len(*h)-1]
+    *h = (*h)[:len(*h)-1]
+    return x
+}
+func profit(input [2]int) float64{
+    return float64(input[0]+1)/float64(input[1]+1) - float64(input[0])/float64(input[1])
+}
+
+func maxAverageRatio(classes [][]int, extraStudents int) float64 {
+    maxHeap := &MaxHeap{}
+    heap.Init(maxHeap)
+    for _,class := range classes{
+        heap.Push(maxHeap,[2]int{class[0],class[1]})
+    }
+    for i := 0; i < extraStudents; i++{
+        x := heap.Pop(maxHeap).([2]int)
+        x[0]++
+        x[1]++
+        heap.Push(maxHeap,x)
+    }
+    average := 0.0
+    for _,class := range (*maxHeap){
+        average += float64(class[0])/float64(class[1])
+    }
+    average = average / float64(len(classes))
+    return average
+}
 ```
 :::
